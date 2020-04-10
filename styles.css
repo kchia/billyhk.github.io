@@ -1,0 +1,103 @@
+body {
+	text-align: center;
+	margin: 0 auto;
+    background: black;
+    
+}
+
+/* Header Elements */
+header {
+	max-height: 5vmin;
+	color: white;
+}
+
+h1 {
+	font-size: 3em;
+}
+
+.start-button {
+	min-width: 30vmin;
+}
+
+.reset-button {
+	min-width: 30vmin;
+}
+.game-display-container {
+	margin: 5px;
+}
+.display {
+}
+
+/* Game Board Elements */
+main {
+}
+
+.game-board {
+	align-content: center;
+	display: grid;
+	grid-template-columns: repeat(2, 30vmin);
+	grid-template-rows: repeat(2, 30vmin);
+	justify-content: center;
+	min-height: 100vh;
+}
+
+.lights {
+	border: 10px solid darkgrey;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 40px;
+
+	width: 30vmin;
+	background-color: black;
+}
+
+#topLeft {
+	height: 29vmin;
+	background: green;
+	border-top-left-radius: 75%;
+	border-bottom-right-radius: 25px;
+	margin: 2px;
+}
+#topLeft:active {
+    border: solid black;
+}
+
+#topRight {
+	height: 29vmin;
+	background: red;
+	border-top-right-radius: 75%;
+	border-bottom-left-radius: 25px;
+
+	margin: 2px;
+}
+#topRight:active {
+    border: solid black;
+}
+
+#bottomLeft {
+	height: 28vmin;
+	background: yellow;
+	border-bottom-left-radius: 75%;
+	border-top-right-radius: 25px;
+	margin: 2px;
+}
+#bottomLeft:active {
+    border: solid black;
+}
+
+#bottomRight {
+	height: 28vmin;
+	background: blue;
+	border-bottom-right-radius: 75%;
+	border-top-left-radius: 25px;
+
+	margin: 2px;
+}
+#bottomRight:active {
+    border: solid black;
+}
+
+.hidden {
+	display: none;
+}
