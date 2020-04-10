@@ -1,31 +1,20 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html>
 	<head>
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<title>SIMON</title>
-		<meta name="description" content="" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="styles.css" />
 	</head>
 	<body>
 		<header>
 			<h1>SIMON!</h1>
 			<button class="start-button">START GAME</button>
-			<button class="reset-button">RESET GAME</button>
-			<!-- <h2 class="max-level">Max Level: </h2>
-			<form class="form">
-				<input
-					class="user-input"
-					type="number"
-					placeholder="# of levels (def. 20)"
-				/>
-				<button class="submit">Submit</button>
-			</form> -->
+			<button class="reset-button" onClick="history.go(0)" class="hidden">
+				RESET GAME
+			</button>
 			<div class="game-display-container">
-                <h2 class ="game-display"></h2>
-                <h2 class="turn-counter"></h2>
-            </div>
+				<h2 class="game-display"></h2>
+				<h2 class="turn-counter"></h2>
+			</div>
 		</header>
 		<main>
 			<section class="game-board">
@@ -35,6 +24,15 @@
 				<div class="light" id="bottomRight"></div>
 			</section>
 		</main>
-        <script src="script.js" async defer></script>
+		<audio src="audio/start-game.mp3" class="start-game-sound"></audio>
+		<audio src="audio/game-over.mp3" class="game-over-sound"></audio>
+		<audio src="audio/win-game.mp3" class="win-game-sound"></audio>
+
+		<audio src="audio/top-left.mp3" class="top-left-sound"></audio>
+		<audio src="audio/top-right.mp3" class="top-right-sound"></audio>
+		<audio src="audio/bottom-right" class="bottom-right-sound"></audio>
+		<audio src="audio/bottom-left" class="bottom-left-sound"></audio>
+
+		<script src="script.js" async defer></script>
 	</body>
 </html>

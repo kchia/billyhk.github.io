@@ -26,18 +26,21 @@ let on = false;
 let win = false;
 
 const turnCounter = document.querySelector('.turn-counter');
+
 const topLeft = document.querySelector('#topLeft');
 const topRight = document.querySelector('#topRight');
 const bottomRight = document.querySelector('#bottomRight');
 const bottomLeft = document.querySelector('#bottomLeft');
+
+//reset starts hidden
 const startButton = document.querySelector('.start-button');
 const resetButton = document.querySelector('.reset-button');
-
+resetButton.classList.toggle('hidden'); //the reset button starts hidden, it simply reloads the page
 startButton.addEventListener('click', startGame);
-resetButton.classList.toggle('hidden');
-resetButton.addEventListener('click', resetGame);
 
 function startGame() {
+	playStartGameSound();
+
 	//when you press the start button, it is replaced with a reset button
 	startButton.classList.toggle('hidden');
 	resetButton.classList.toggle('hidden');
@@ -58,80 +61,48 @@ function startGame() {
 	playerSequence = [];
 
 	//create an array of randomly assorted numbers from 1 to 4
-	for (let i = 0; i < 20; i++) {
+	for (let i = 0; i < 4; i++) {
 		engineSequence.push(Math.floor(Math.random() * 4) + 1);
 	}
 
 	//set the intervalId
-	intervalId = setInterval(gameTurn, 800);
+	//call gameTurn, which allows the engine to start
+	intervalId = setInterval(gameTurn, 1500);
 }
 
 function gameTurn() {
-	//if the engine just played, then flash == turn
-	//on must be true so when a flash is played it will update the array
+	//the engine hasn't played yet, so the flash will be less than turn; thus it will go on to else if...
+
+	//if this condition is true then it's the player's turn. since on is true, the lights' event listeners will now be active
 	if (flash == turn) {
 		on = true;
 		engineTurn = false;
 		clearInterval(intervalId);
-		clearAll();
+		clearAllLights();
 	} else if (engineTurn) {
 		//if the engine plays a flash, that flash will have the effect of a click
-		//a flash is added with each engine click to ensure that the engine plays the same number of flashes as the number of the round
+		//a flash is added with each engine click to make progress toward reaching the number of the turn
 		setTimeout(() => {
-			if (engineSequence[flash] == 1) one();
-			else if (engineSequence[flash] == 2) two();
-			else if (engineSequence[flash] == 3) three();
-			else four();
+			if (engineSequence[flash] == 1) clickTopLeft();
+			else if (engineSequence[flash] == 2) clickTopRight();
+			else if (engineSequence[flash] == 3) clickBottomRight();
+			else clickBottomLeft();
 			flash++;
 		}, 200);
-		clearAll();
+		clearAllLights();
 	}
 }
 
-//the next four functions create the effect that the engine is clicking on a light as it iterates through the array
-function one() {
-	topLeft.style.background = 'lightgreen';
-	//play tone
-}
-function two() {
-	topRight.style.background = 'pink';
-	//play tone
-}
-function three() {
-	bottomRight.style.background = 'lightblue';
-	//play tone
-}
-function four() {
-	bottomLeft.style.background = 'lightyellow';
-	//play tone
-}
-
-//this functions turns all the lights to default color
-function clearAll() {
-	topLeft.style.background = 'green';
-	topRight.style.background = 'red';
-	bottomRight.style.background = 'blue';
-	bottomLeft.style.background = 'yellow';
-}
-
-//this triggers all lights to flash simultaneously
-function flashAll() {
-	topLeft.style.background = 'lightgreen';
-	topRight.style.background = 'pink';
-	bottomRight.style.background = 'lightblue';
-	bottomLeft.style.background = 'lightyellow';
-}
-
 //the next four sequences affect the playerSequence
-//with each click, the light is checked the the engineArray with a corresponding light. the are numbered 1 to 4 clockwise from top left
+//with each click, the light is compared with the engineArray with a corresponding light. the are numbered 1 to 4 clockwise from top left
 topLeft.addEventListener('click', (event) => {
 	if (on) {
 		playerSequence.push(1);
 		checkCorrect();
-		one();
+		clickTopLeft();
 		if (!win) {
 			setTimeout(() => {
-				clearAll();
+				clearAllLights();
 			}, 300);
 		}
 	}
@@ -140,10 +111,10 @@ topRight.addEventListener('click', (event) => {
 	if (on) {
 		playerSequence.push(2);
 		checkCorrect();
-		two();
+		clickTopRight();
 		if (!win) {
 			setTimeout(() => {
-				clearAll();
+				clearAllLights();
 			}, 300);
 		}
 	}
@@ -152,10 +123,10 @@ bottomRight.addEventListener('click', (event) => {
 	if (on) {
 		playerSequence.push(3);
 		checkCorrect();
-		three();
+		clickBottomRight();
 		if (!win) {
 			setTimeout(() => {
-				clearAll();
+				clearAllLights();
 			}, 300);
 		}
 	}
@@ -164,18 +135,64 @@ bottomLeft.addEventListener('click', (event) => {
 	if (on) {
 		playerSequence.push(4);
 		checkCorrect();
-		four();
+		clickBottomLeft();
 		if (!win) {
 			setTimeout(() => {
-				clearAll();
+				clearAllLights();
 			}, 300);
 		}
 	}
 });
 
+//the next four functions create the effect that the lights are being clicked either by the player or the engine
+
+//flashes with sound-- for gameplay
+function clickTopLeft() {
+	topLeft.style.background = 'lightgreen';
+	topLeft.style.border = 'solid black';
+
+	playTopLeft();
+}
+function clickTopRight() {
+	topRight.style.background = 'pink';
+	topRight.style.border = 'solid black';
+
+	playTopRight();
+}
+function clickBottomRight() {
+	bottomRight.style.background = 'lightblue';
+	bottomRight.style.border = 'solid black';
+
+	playBottomRight();
+}
+function clickBottomLeft() {
+	bottomLeft.style.background = 'lightyellow';
+	bottomLeft.style.border = 'solid black';
+
+	playBottomLeft();
+}
+
+//muted flashes-- for winGame()
+function clickTopLeftMuted() {
+	topLeft.style.background = 'lightgreen';
+	topLeft.style.border = 'solid black';
+}
+function clickTopRightMuted() {
+	topRight.style.background = 'pink';
+	topRight.style.border = 'solid black';
+}
+function clickBottomRightMuted() {
+	bottomRight.style.background = 'lightblue';
+	bottomRight.style.border = 'solid black';
+}
+function clickBottomLeftMuted() {
+	bottomLeft.style.background = 'lightyellow';
+	bottomLeft.style.border = 'solid black';
+}
+
 //this function checks for correct and follows up with a function depending on the condition
 function checkCorrect() {
-	//if the player choice is not correct, it is incorrect
+	//if the last clicked light by the player does not equal that index in the engineSequence, then the choice is deemed incorrect, more to next if statement
 	if (
 		playerSequence[playerSequence.length - 1] !==
 		engineSequence[playerSequence.length - 1]
@@ -184,51 +201,129 @@ function checkCorrect() {
 	}
 	//if the player is incorrect, all lights flash, and the display shows game over and your score
 	if (!correct) {
-		flashAll();
+		flashAllLights();
 		setTimeout(() => {
 			turnCounter.innerHTML = `GAME OVER. Your Score: ${turn}`;
-			clearAll();
+			clearAllLights();
 		}, 800);
-		//play tone
+		setTimeout(playGameOverSound, 800);
+		on = false;
 		//however, if you are correct, you are passed to the next turn
-	} else if (turn == playerSequence.length && correct && !win) {
+	} else if (turn == playerSequence.length && correct && !win && turn < 4) {
 		turn++;
-		playerSequence = [];
-		engineTurn = true;
-		flash = 0;
 		turnCounter.innerHTML = turn;
+
+		flash = 0;
+		playerSequence = [];
+
+		engineTurn = true;
+
 		intervalId = setInterval(gameTurn, 800);
+
 		//if you win all turns, winGame function is called
-	} else if (playerSequence.length == 20 && correct) {
+	} else if (playerSequence.length == 4 && correct) {
 		winGame();
 	}
 }
 
 //if you pass all turns of the game, the clicks are no longer pushed to an array (off position) and the display reads "win"
 function winGame() {
-	flashAll();
+	setTimeout(playWinGameSound, 800);
+
 	on = false;
 	win = true;
-	turnCounter.innerHTML = 'WIN';
-	//play tone
+
+	intervalId = setInterval(flashAllLightsRandomly, 200);
+	turnCounter.innerHTML = 'CONGRATULATIONS! YOU WIN!';
+
+	function flashAllLightsRandomly() {
+		let winSequence = [];
+		for (let i = 0; i < 20; i++) {
+			winSequence.push(Math.floor(Math.random() * 4) + 1);
+			if (winSequence[i] == 1) {
+				clickTopLeftMuted();
+				topRight.style.background = 'red';
+				bottomRight.style.background = 'blue';
+				bottomLeft.style.background = 'yellow';
+			} else if (winSequence[i] == 2) {
+				clickTopRightMuted();
+				topLeft.style.background = 'green';
+				bottomRight.style.background = 'blue';
+				bottomLeft.style.background = 'yellow';
+			} else if (winSequence[i] == 3) {
+				clickBottomRightMuted();
+				topLeft.style.background = 'green';
+				topRight.style.background = 'red';
+				bottomLeft.style.background = 'yellow';
+			} else if (winSequence[i] == 4) {
+				clickBottomLeftMuted();
+				topLeft.style.background = 'green';
+				topRight.style.background = 'red';
+				bottomRight.style.background = 'blue';
+			}
+		}
+	}
 }
 
-//a reset button replaces the start button, the reset button brings the game back to default conditions
-function resetGame() {
-	startButton.classList.toggle('hidden');
-	resetButton.classList.toggle('hidden');
+//this triggers all lights to flash simultaneously
+function flashAllLights() {
+	topLeft.style.background = 'lightgreen';
+	topRight.style.background = 'pink';
+	bottomRight.style.background = 'lightblue';
+	bottomLeft.style.background = 'lightyellow';
+}
 
-	on = false;
-	turnCounter.innerHTML = '';
-	clearAll();
-	clearInterval(intervalId);
-	flash = 0;
+//this  turns all the lights back to their default color
+function clearAllLights() {
+	topLeft.style.background = 'green';
+	topRight.style.background = 'red';
+	bottomRight.style.background = 'blue';
+	bottomLeft.style.background = 'yellow';
+
+	topLeft.style.border = 'none';
+	topRight.style.border = 'none';
+	bottomRight.style.border = 'none';
+	bottomLeft.style.border = 'none';
+}
+
+//these functions are called to play audio files that I composed using Logic Pro
+function playStartGameSound() {
+	const startGameSound = document.querySelector('.start-game-sound');
+	startGameSound.play();
+}
+function playGameOverSound() {
+	const gameOverSound = document.querySelector('.game-over-sound');
+	gameOverSound.play();
+}
+function playWinGameSound() {
+	let winGameSound = document.querySelector('.win-game-sound');
+	winGameSound.play();
+}
+function playTopLeft() {
+	const topLeftSound = document.querySelector('.top-left-sound');
+	topLeftSound.play();
+}
+function playTopRight() {
+	const topRightSound = document.querySelector('.top-right-sound');
+	topRightSound.play();
+}
+function playBottomRight() {
+	const bottomRightSound = document.querySelector('.bottom-right-sound');
+	bottomRightSound.play();
+}
+function playBottomLeft() {
+	const bottomLeftSound = document.querySelector('.bottom-left-sound');
+	bottomLeftSound.play();
 }
 
 /*
 too add
 -modal with directions
 -sound files
+	-->lights 1 2 3 or 4
+	-->game over
+	-->winGame
+	-->when the start button is pressed
 -pastel color scheme
 -more space and rounded edges for the 4 elements
 -more exciting game display

@@ -1,8 +1,12 @@
+/* toggle between hidden and shown */
+.hidden {
+	display: none;
+}
+
 body {
 	text-align: center;
 	margin: 0 auto;
-    background: black;
-    
+	background: black;
 }
 
 /* Header Elements */
@@ -60,7 +64,7 @@ main {
 	margin: 2px;
 }
 #topLeft:active {
-    border: solid black;
+	border: solid black;
 }
 
 #topRight {
@@ -72,7 +76,7 @@ main {
 	margin: 2px;
 }
 #topRight:active {
-    border: solid black;
+	border: solid black;
 }
 
 #bottomLeft {
@@ -83,7 +87,7 @@ main {
 	margin: 2px;
 }
 #bottomLeft:active {
-    border: solid black;
+	border: solid black;
 }
 
 #bottomRight {
@@ -95,9 +99,5 @@ main {
 	margin: 2px;
 }
 #bottomRight:active {
-    border: solid black;
-}
-
-.hidden {
-	display: none;
+	border: solid black;
 }
