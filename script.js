@@ -67,7 +67,7 @@ function startGame() {
 
 	//set the intervalId
 	//call gameTurn, which allows the engine to start
-	intervalId = setInterval(gameTurn, 1500);
+	intervalId = setInterval(gameTurn, 1200);
 }
 
 function gameTurn() {
@@ -319,11 +319,7 @@ function playBottomLeft() {
 /*
 too add
 -modal with directions
--sound files
-	-->lights 1 2 3 or 4
-	-->game over
-	-->winGame
-	-->when the start button is pressed
+
 -pastel color scheme
 -more space and rounded edges for the 4 elements
 -more exciting game display
