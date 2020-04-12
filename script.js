@@ -61,7 +61,7 @@ function startGame() {
 	playerSequence = [];
 
 	//create an array of randomly assorted numbers from 1 to 4
-	for (let i = 0; i < 4; i++) {
+	for (let i = 0; i < 12; i++) {
 		engineSequence.push(Math.floor(Math.random() * 4) + 1);
 	}
 
@@ -75,8 +75,8 @@ function gameTurn() {
 
 	//if this condition is true then it's the player's turn. since on is true, the lights' event listeners will now be active
 	if (flash == turn) {
-		on = true;
 		engineTurn = false;
+		on = true;
 		clearInterval(intervalId);
 		clearAllLights();
 	} else if (engineTurn) {
@@ -88,7 +88,7 @@ function gameTurn() {
 			else if (engineSequence[flash] == 3) clickBottomRight();
 			else clickBottomLeft();
 			flash++;
-		}, 200);
+		}, 180);
 		clearAllLights();
 	}
 }
@@ -97,50 +97,34 @@ function gameTurn() {
 //with each click, the light is compared with the engineArray with a corresponding light. the are numbered 1 to 4 clockwise from top left
 topLeft.addEventListener('click', (event) => {
 	if (on) {
+		clickTopLeft();
 		playerSequence.push(1);
 		checkCorrect();
-		clickTopLeft();
-		if (!win) {
-			setTimeout(() => {
-				clearAllLights();
-			}, 300);
-		}
+		setTimeout(clearAllLights, 180);
 	}
 });
 topRight.addEventListener('click', (event) => {
 	if (on) {
+		clickTopRight();
 		playerSequence.push(2);
 		checkCorrect();
-		clickTopRight();
-		if (!win) {
-			setTimeout(() => {
-				clearAllLights();
-			}, 300);
-		}
+		setTimeout(clearAllLights, 180);
 	}
 });
 bottomRight.addEventListener('click', (event) => {
 	if (on) {
+		clickBottomRight();
 		playerSequence.push(3);
 		checkCorrect();
-		clickBottomRight();
-		if (!win) {
-			setTimeout(() => {
-				clearAllLights();
-			}, 300);
-		}
+		setTimeout(clearAllLights, 180);
 	}
 });
 bottomLeft.addEventListener('click', (event) => {
 	if (on) {
+		clickBottomLeft();
 		playerSequence.push(4);
 		checkCorrect();
-		clickBottomLeft();
-		if (!win) {
-			setTimeout(() => {
-				clearAllLights();
-			}, 300);
-		}
+		setTimeout(clearAllLights, 180);
 	}
 });
 
@@ -148,26 +132,34 @@ bottomLeft.addEventListener('click', (event) => {
 
 //flashes with sound-- for gameplay
 function clickTopLeft() {
+	console.log('clicked 1')
+
 	topLeft.style.background = 'lightgreen';
-	topLeft.style.border = 'solid black';
+	topLeft.style.border = '8px solid rgb(201, 174, 174)';
 
 	playTopLeft();
 }
 function clickTopRight() {
+	console.log('clicked 2')
+
 	topRight.style.background = 'pink';
-	topRight.style.border = 'solid black';
+	topRight.style.border = '8px solid rgb(201, 174, 174)';
 
 	playTopRight();
 }
 function clickBottomRight() {
+	console.log('clicked 3')
+
 	bottomRight.style.background = 'lightblue';
-	bottomRight.style.border = 'solid black';
+	bottomRight.style.border = '8px solid rgb(201, 174, 174)';
 
 	playBottomRight();
 }
 function clickBottomLeft() {
+	console.log('clicked 4');
+
 	bottomLeft.style.background = 'lightyellow';
-	bottomLeft.style.border = 'solid black';
+	bottomLeft.style.border = '8px solid rgb(201, 174, 174)';
 
 	playBottomLeft();
 }
@@ -175,19 +167,19 @@ function clickBottomLeft() {
 //muted flashes-- for winGame()
 function clickTopLeftMuted() {
 	topLeft.style.background = 'lightgreen';
-	topLeft.style.border = 'solid black';
+	topLeft.style.border = 'solid rgb(201, 174, 174)';
 }
 function clickTopRightMuted() {
 	topRight.style.background = 'pink';
-	topRight.style.border = 'solid black';
+	topRight.style.border = 'solid rgb(201, 174, 174)';
 }
 function clickBottomRightMuted() {
 	bottomRight.style.background = 'lightblue';
-	bottomRight.style.border = 'solid black';
+	bottomRight.style.border = 'solid rgb(201, 174, 174)';
 }
 function clickBottomLeftMuted() {
 	bottomLeft.style.background = 'lightyellow';
-	bottomLeft.style.border = 'solid black';
+	bottomLeft.style.border = 'solid rgb(201, 174, 174)';
 }
 
 //this function checks for correct and follows up with a function depending on the condition
@@ -200,7 +192,7 @@ function checkCorrect() {
 		correct = false;
 	}
 	//if the player is incorrect, all lights flash, and the display shows game over and your score
-	if (!correct) {
+	if (correct == false) {
 		flashAllLights();
 		setTimeout(() => {
 			turnCounter.innerHTML = `GAME OVER. Your Score: ${turn}`;
@@ -209,7 +201,7 @@ function checkCorrect() {
 		setTimeout(playGameOverSound, 800);
 		on = false;
 		//however, if you are correct, you are passed to the next turn
-	} else if (turn == playerSequence.length && correct && !win && turn < 4) {
+	} else if (turn == playerSequence.length && correct && !win && turn < 12) {
 		turn++;
 		turnCounter.innerHTML = turn;
 
@@ -221,7 +213,7 @@ function checkCorrect() {
 		intervalId = setInterval(gameTurn, 800);
 
 		//if you win all turns, winGame function is called
-	} else if (playerSequence.length == 4 && correct) {
+	} else if (playerSequence.length == 12 && correct) {
 		winGame();
 	}
 }
@@ -318,8 +310,6 @@ function playBottomLeft() {
 
 /*
 too add
--modal with directions
-
 -pastel color scheme
 -more space and rounded edges for the 4 elements
 -more exciting game display
