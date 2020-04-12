@@ -11,7 +11,7 @@ body {
 
 /* Header Elements */
 header {
-	min-height: 5vmin;
+	min-height: 15px;
 	color: white;
 }
 
@@ -39,6 +39,7 @@ button {
 
 /* Game Board Elements */
 main {
+	padding: 0;
 }
 
 .game-board {
@@ -47,7 +48,7 @@ main {
 	grid-template-columns: repeat(2, 30vmin);
 	grid-template-rows: repeat(2, 30vmin);
 	justify-content: center;
-	min-height: 100vh;
+	min-height: 50vh;
 }
 
 #topLeft {
@@ -115,4 +116,7 @@ footer {
 	text-align: center;
 	color: rgb(227, 227, 142);
 	font-size: 1.5rem;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
 }
