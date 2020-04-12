@@ -8,10 +8,9 @@ This project is focused on developing a memory game in which a player competes w
 ![simon win game sequence](images/simon-win-game-screenshot.png)
 
 ## Technologies Used
-
-HTML
-CSS
-Javascript
+* HTML
+* CSS
+* Javascript
 
 ## Installation Instructions
 There are no special installation instructions. The app runs in the web browser (Google Chrome is recommended)
