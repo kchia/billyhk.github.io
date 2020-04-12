@@ -13,7 +13,7 @@ HTML
 CSS
 Javascript
 
-##Installation Instructions\*\*
+## Installation Instructions
 There are no special installation instructions. The app runs in the web browser (Google Chrome is recommended)
 
 User Stories:
