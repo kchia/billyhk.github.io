@@ -4,6 +4,8 @@
 
 This project is focused on developing a memory game in which a player competes with an automated engine.
 
+## Click [here](https://billyhk.github.io/) to play.
+
 **Below is a screen shot of the win game sequence**
 ![simon win game sequence](images/simon-win-game-screenshot.png)
 
