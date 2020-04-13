@@ -2,7 +2,7 @@
 
 ## Description
 
-This project is focused on developing a memory game in which a player competes with an automated engine.
+This project is focused on developing a memory game in which a player competes with an automated engine. It is based on a handheld eletronic game call [Simon](https://en.wikipedia.org/wiki/Simon_(game)).
 
 ## Click [here](https://billyhk.github.io/) to play.
 
