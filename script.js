@@ -139,32 +139,24 @@ bottomLeft.addEventListener('click', (event) => {
 
 //flashes with sound-- for gameplay
 function clickTopLeft() {
-	console.log('clicked 1');
-
 	topLeft.style.background = 'lightgreen';
 	topLeft.style.border = '8px solid rgb(201, 174, 174)';
 
 	playTopLeft();
 }
 function clickTopRight() {
-	console.log('clicked 2');
-
 	topRight.style.background = 'pink';
 	topRight.style.border = '8px solid rgb(201, 174, 174)';
 
 	playTopRight();
 }
 function clickBottomRight() {
-	console.log('clicked 3');
-
 	bottomRight.style.background = 'lightblue';
 	bottomRight.style.border = '8px solid rgb(201, 174, 174)';
 
 	playBottomRight();
 }
 function clickBottomLeft() {
-	console.log('clicked 4');
-
 	bottomLeft.style.background = 'lightyellow';
 	bottomLeft.style.border = '8px solid rgb(201, 174, 174)';
 
