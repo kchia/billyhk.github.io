@@ -207,11 +207,11 @@ function checkCorrect() {
 			turnCounter.innerHTML = `GAME OVER. Your Score: ${turn}`;
 			clearAllLights();
 		}, 800);
-		setTimeout(playGameOverSound, 800);
+		setTimeout(playGameOverSound, 1200);
 
 		//however, if you are correct, you are passed to the next level (turn)
 		//this conditional statement makes the distinction between winning a round and winning the whole game
-	} else if (turn == playerSequence.length && correct && turn < 5) {
+	} else if (turn == playerSequence.length && correct && turn < 12) {
 		//if the player is correct, the turn counter increases by 1 to move on to the next round
 		turn++;
 		turnCounter.innerHTML = turn;
@@ -229,7 +229,7 @@ function checkCorrect() {
 		intervalId = setInterval(gameTurn, 800);
 
 		//if you win all turns, winGame function is called
-	} else if (playerSequence.length == 5 && correct) {
+	} else if (playerSequence.length == 12 && correct) {
 		win = true;
 		winGame();
 	}
