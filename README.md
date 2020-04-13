@@ -1,4 +1,4 @@
-# simon-game
+# simon game
 
 ## Description
 
