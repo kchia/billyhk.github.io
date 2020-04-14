@@ -40,6 +40,7 @@ button {
 /* Game Board Elements */
 main {
 	padding: 0;
+	margin-bottom: 40px;
 }
 
 .game-board {
@@ -108,8 +109,6 @@ main {
 	border: 8px solid rgb(201, 174, 174);
 	background-color: lightblue;
 }
-
-
 
 footer {
 	background: rgb(179, 156, 156);
