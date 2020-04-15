@@ -1,121 +1,123 @@
+/* In general, I'd not recommend using tag selectors (e.g., h1) to target elements for styling purposes because tag selectors are not specific enough and can easily get overridden. Just stick with class selectors instead. Here are some reasons why: https://frontstuff.io/you-need-to-stop-targeting-tags-in-css*/
+
 /* toggle between hidden and shown */
 .hidden {
-	display: none;
+  display: none;
 }
 
 body {
-	text-align: center;
-	margin: 0 auto;
-	background: rgb(201, 174, 174);
+  text-align: center;
+  margin: 0 auto;
+  background: rgb(201, 174, 174);
 }
 
 /* Header Elements */
 header {
-	min-height: 15px;
-	color: white;
+  min-height: 15px;
+  color: white;
 }
 
 h1 {
-	font-size: 5em;
-	font-family: 'Montserrat', sans-serif;
+  font-size: 5em;
+  font-family: 'Montserrat', sans-serif;
 }
 
 button {
-	min-width: 30vmin;
-	background: rgb(121, 121, 121);
-	color: white;
-	font-weight: 600;
-	font-size: 1em;
-	border: 2px solid rgb(203, 156, 156);
+  min-width: 30vmin;
+  background: rgb(121, 121, 121);
+  color: white;
+  font-weight: 600;
+  font-size: 1em;
+  border: 2px solid rgb(203, 156, 156);
 }
 
 .game-display-container {
-	margin: 5px;
+  margin: 5px;
 }
 .turn-counter {
-	font-size: 2em;
-	font-family: 'Ubuntu', sans-serif;
+  font-size: 2em;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 /* Game Board Elements */
 main {
-	padding: 0;
-	margin-bottom: 40px;
+  padding: 0;
+  margin-bottom: 40px;
 }
 
 .game-board {
-	align-content: center;
-	display: grid;
-	grid-template-columns: repeat(2, 30vmin);
-	grid-template-rows: repeat(2, 30vmin);
-	justify-content: center;
-	min-height: 50vh;
+  align-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 30vmin);
+  grid-template-rows: repeat(2, 30vmin);
+  justify-content: center;
+  min-height: 50vh;
 }
 
 #topLeft {
-	height: 28vmin;
-	background: green;
-	border-top-left-radius: 75%;
-	border-top-right-radius: 15%;
-	border-bottom-left-radius: 15%;
-	border-bottom-right-radius: 15%;
-	margin-right: 4px;
+  height: 28vmin;
+  background: green;
+  border-top-left-radius: 75%;
+  border-top-right-radius: 15%;
+  border-bottom-left-radius: 15%;
+  border-bottom-right-radius: 15%;
+  margin-right: 4px;
 }
 #topLeft:active {
-	border: 8px solid rgb(201, 174, 174);
-	background-color: lightgreen;
+  border: 8px solid rgb(201, 174, 174);
+  background-color: lightgreen;
 }
 
 #topRight {
-	height: 28vmin;
-	background: red;
-	border-top-right-radius: 75%;
-	border-top-left-radius: 15%;
-	border-bottom-right-radius: 15%;
-	border-bottom-left-radius: 15%;
-	margin-left: 4px;
+  height: 28vmin;
+  background: red;
+  border-top-right-radius: 75%;
+  border-top-left-radius: 15%;
+  border-bottom-right-radius: 15%;
+  border-bottom-left-radius: 15%;
+  margin-left: 4px;
 }
 #topRight:active {
-	border: 8px solid rgb(201, 174, 174);
-	background-color: pink;
+  border: 8px solid rgb(201, 174, 174);
+  background-color: pink;
 }
 
 #bottomLeft {
-	height: 27vmin;
-	background: yellow;
-	border-bottom-left-radius: 75%;
-	border-bottom-right-radius: 15%;
-	border-top-left-radius: 15%;
-	border-top-right-radius: 15%;
-	margin-right: 4px;
+  height: 27vmin;
+  background: yellow;
+  border-bottom-left-radius: 75%;
+  border-bottom-right-radius: 15%;
+  border-top-left-radius: 15%;
+  border-top-right-radius: 15%;
+  margin-right: 4px;
 }
 #bottomLeft:active {
-	border: 8px solid rgb(201, 174, 174);
+  border: 8px solid rgb(201, 174, 174);
 
-	background-color: lightyellow;
+  background-color: lightyellow;
 }
 
 #bottomRight {
-	height: 27vmin;
-	background: blue;
-	border-bottom-right-radius: 75%;
-	border-bottom-left-radius: 15%;
-	border-top-right-radius: 15%;
-	border-top-left-radius: 15%;
+  height: 27vmin;
+  background: blue;
+  border-bottom-right-radius: 75%;
+  border-bottom-left-radius: 15%;
+  border-top-right-radius: 15%;
+  border-top-left-radius: 15%;
 
-	margin-left: 4px;
+  margin-left: 4px;
 }
 #bottomRight:active {
-	border: 8px solid rgb(201, 174, 174);
-	background-color: lightblue;
+  border: 8px solid rgb(201, 174, 174);
+  background-color: lightblue;
 }
 
 footer {
-	background: rgb(179, 156, 156);
-	text-align: center;
-	color: rgb(227, 227, 142);
-	font-size: 1.5rem;
-	position: fixed;
-	bottom: 0;
-	width: 100%;
+  background: rgb(179, 156, 156);
+  text-align: center;
+  color: rgb(227, 227, 142);
+  font-size: 1.5rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }

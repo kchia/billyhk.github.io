@@ -1,44 +1,47 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>SIMON</title>
-		<link
-			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Ubuntu:wght@700&display=swap"
-			rel="stylesheet"
-		/>
-		<link rel="stylesheet" href="styles.css" />
-		<link rel="icon" href="images/favicon.png" />
-	</head>
-	<body>
-		<header>
-			<h1>SIMON!</h1>
-			<button class="start-button">START GAME</button>
-			<button class="reset-button" onClick="history.go(0)" class="hidden">
-				RESET GAME
-			</button>
-			<div class="game-display-container">
-				<h2 class="turn-counter">Can you beat level 12?</h2>
-			</div>
-		</header>
-		<main>
-			<section class="game-board">
-				<div class="light" id="topLeft"></div>
-				<div class="light" id="topRight"></div>
-				<div class="light" id="bottomLeft"></div>
-				<div class="light" id="bottomRight"></div>
-			</section>
-		</main>
-		<footer>Billy Kaufman &copy; 2020</footer>
+  <head>
+    <title>SIMON</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Ubuntu:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="images/favicon.png" />
+  </head>
+  <body>
+    <header>
+      <h1>SIMON!</h1>
+      <button class="start-button">START GAME</button>
+      <button class="reset-button" onClick="history.go(0)" class="hidden">
+        RESET GAME
+      </button>
+      <div class="game-display-container">
+        <h2 class="turn-counter">
+          Can you beat level 12?
+        </h2>
+      </div>
+    </header>
+    <main>
+      <section class="game-board">
+        <div class="light" id="topLeft"></div>
+        <div class="light" id="topRight"></div>
+        <div class="light" id="bottomLeft"></div>
+        <div class="light" id="bottomRight"></div>
+      </section>
+    </main>
+    <footer>Billy Kaufman &copy; 2020</footer>
 
-		<audio src="audio/start-game.mp3" class="start-game-sound"></audio>
-		<audio src="audio/game-over.mp3" class="game-over-sound"></audio>
-		<audio src="audio/win-game.mp3" class="win-game-sound"></audio>
+    <audio src="audio/start-game.mp3" class="start-game-sound"></audio>
+    <audio src="audio/game-over.mp3" class="game-over-sound"></audio>
+    <audio src="audio/win-game.mp3" class="win-game-sound"></audio>
 
-		<audio src="audio/top-left.mp3" class="top-left-sound"></audio>
-		<audio src="audio/top-right.mp3" class="top-right-sound"></audio>
-		<audio src="audio/bottom-right.mp3" class="bottom-right-sound"></audio>
-		<audio src="audio/bottom-left.mp3" class="bottom-left-sound"></audio>
+    <audio src="audio/top-left.mp3" class="top-left-sound"></audio>
+    <audio src="audio/top-right.mp3" class="top-right-sound"></audio>
+    <audio src="audio/bottom-right.mp3" class="bottom-right-sound"></audio>
+    <audio src="audio/bottom-left.mp3" class="bottom-left-sound"></audio>
 
-		<script src="script.js" async defer></script>
-	</body>
+    <!-- Since your script tag is at the end of the body tag, 'async' and 'defer' attributes are not needed here. Take a read as to what these attributes do: https://flaviocopes.com/javascript-async-defer/ -->
+    <script src="script.js" async defer></script>
+  </body>
 </html>
